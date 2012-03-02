@@ -467,6 +467,7 @@
     </distributionManagement>
     <modules>
         <module>tljunit-surefire</module>
+        <module>tljunit-jbehave</module>
         <module>tljunit-eclipse</module>
     </modules>
 </project>
