@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.oneandone.testlinkjunit</groupId>
     <artifactId>tljunit-parent</artifactId>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>3.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>tljunit parent</name>
@@ -29,6 +30,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.12</maven-surefire-plugin.version>
+        <maven-checkstyle-plugin.version>2.9.1</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
     </properties>
 
     <licenses>
@@ -64,7 +68,7 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -83,12 +87,51 @@
             <organizationUrl>${project.url}</organizationUrl>
             <url>http://github.com/mfriedenhagen/</url>
             <timezone>+1</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
         </developer>
     </developers>
+
+    <contributors>
+        <contributor>
+            <name>Uli Kraus</name>
+            <organization>1 &amp; 1 Internet AG</organization>
+            <url>https://github.com/ulkraus</url>
+            <timezone>+1</timezone>
+            <roles>
+                <role>bug reporter</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Mario Mancino</name>
+            <organization>1 &amp; 1 Internet AG</organization>
+            <url>https://github.com/mmancino</url>
+            <timezone>+1</timezone>
+            <roles>
+                <role>bug reporter</role>
+            </roles>
+        </contributor>
+    </contributors>
 
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.4.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -114,7 +157,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.2</version>
+                    <version>${maven-jar-plugin.version}</version>
                     <configuration>
                         <archive>
                             <manifest>
@@ -280,7 +323,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.8</version>
+                    <version>${maven-checkstyle-plugin.version}</version>
                     <configuration>
                         <enableRulesSummary>false</enableRulesSummary>
                         <configLocation>${user.dir}/src/conf/checkstyle-ruleset.xml</configLocation>
@@ -345,7 +388,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.8</version>
+                <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
                     <enableRulesSummary>false</enableRulesSummary>
                     <configLocation>${user.dir}/src/conf/checkstyle-ruleset.xml</configLocation>
@@ -355,7 +398,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven-pmd-plugin.version}</version>
                 <configuration>
                     <linkXRef>true</linkXRef>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
@@ -409,6 +452,11 @@
                     <debug>false</debug>
                     <relaxed>false</relaxed>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>1.3.1</version>
             </plugin>
         </plugins>
     </reporting>
