@@ -126,6 +126,7 @@
                         <!-- groupId is sufficient as we always release all modules -->
                         <tagNameFormat>@{groupId}-@{version}</tagNameFormat>
                         <goals>clean deploy</goals>
+                        <arguments>-Drevision=${revision}</arguments>
                     </configuration>
                 </plugin>
                 <plugin>
